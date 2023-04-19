@@ -3,10 +3,7 @@ package com.tutorial.day1.employee.Controller;
 import com.tutorial.day1.employee.Entity.Employee;
 import com.tutorial.day1.employee.Service.employeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author - rohit
@@ -22,10 +19,15 @@ public class employeeController {
     @Autowired
     private employeeService employeeService;
 
-    @PostMapping
+    //http://localhost:8080/employee/create
+    //@RequestMapping(method = RequestMethod.POST, value = "/create")
+    @PostMapping("/create")
     public Employee createEmployee(@RequestBody Employee employee){
-        System.out.println(employee.getName());
+        System.err.println("Entry to Controller : " + employee.getId());
         Employee data = employeeService.createEmployee(employee);
+        //System.err.println("Return from Controller : " + data.getId());
         return data;
     }
+
+
 }
