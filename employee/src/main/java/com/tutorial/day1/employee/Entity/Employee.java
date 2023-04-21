@@ -5,24 +5,32 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+//@Table(name = "entityTable")
 public class Employee {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Integer id;
+
+   //@Column(name = "fullname")
    private String name;
    private String email;
    private Integer age;
    private String city;
+
+//   public Employee(Integer id, String name, String email, Integer age, String city) {
+//      this.id = id;
+//      this.name = name;
+//      this.email = email;
+//      this.age = age;
+//      this.city = city;
+//   }
 
    //Default Constructor
 //   public Employee() {
