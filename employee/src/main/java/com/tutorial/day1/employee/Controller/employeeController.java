@@ -5,6 +5,8 @@ import com.tutorial.day1.employee.Service.employeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author - rohit
  * @project - employee
@@ -29,5 +31,48 @@ public class employeeController {
         return data;
     }
 
+//    @GetMapping
+//    public Employee byId(@RequestBody Integer id){
+//        Employee byId = employeeService.getById(id);
+//        return byId;
+//    }
+
+    //localhost:8080/employee/{id}
+    @GetMapping("/{userId}")
+    public Employee byId(@PathVariable("userId") Integer id){
+        Employee byId = employeeService.getById(id);
+        return byId;
+    }
+
+//    @GetMapping
+//    public Employee byId(@RequestParam(name = "id", defaultValue = "1", required = false) Integer id){
+//        Employee byId = employeeService.getById(id);
+//        return byId;
+//    }
+
+//    @GetMapping
+//    public Employee byId(@RequestParam(name = "id") Integer id){
+//        Employee byId = employeeService.getById(id);
+//        return byId;
+//    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Integer id){
+//        String delete = employeeService.delete(id);
+//        String data = employeeService.delete(2);
+//        Integer data = employeeService.delete(2);
+        return employeeService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public Employee update(@PathVariable Integer id, @RequestBody Employee employee){
+//        String delete = employeeService.delete(id);
+        return employeeService.update(employee, id);
+    }
+
+    @GetMapping
+    public List<Employee> getAll(){
+        return employeeService.getAll();
+    }
 
 }
